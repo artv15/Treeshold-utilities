@@ -36,7 +36,7 @@ async def banrep(ctx, usr, time, *, rule):
     Emb.add_field(name="Срок", value=time, inline=True)
     Emb.add_field(name="По причине", value=rule, inline=True)
     await ctx.send(embed=Emb)
-    print("Issued ban report. Report arguments: " + usr + time + rule)
+    print("Issued ban report. Report arguments: " + usr, time, rule)
 
 #Начало группы vote_commands
 message_id = 0 # Переменная для сообщения голосования
