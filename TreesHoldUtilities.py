@@ -68,6 +68,8 @@ async def endvote(ctx):
         result += reaction.emoji + ": " + str(reaction.count - 1)
     times_through = 0
     fetch_YN = "Y" 
+    global FinalResultY
+    global FinalResultN
     num = []
     for i in result:
     	if i == ":":
