@@ -66,8 +66,33 @@ async def endvote(ctx):
     result = ''
     for reaction in resactions:
         result += reaction.emoji + ": " + str(reaction.count - 1)
-    FinalResultY = result[3]
-    FinalResultN = result[7]
+    times_through = 0
+    fetch_YN = "Y" 
+    num = []
+    for i in result:
+    	if i = ":":
+    		times_through = 1
+    	else:
+    		times_through = 0
+    	if i = " ":
+    		times_through = 2
+    	else:
+    		times_through = 0
+    	if i != "✅" or i != '❌' and times_through >= 2:
+    		num.append(str(i))
+    		times_through = 3
+    	elif times_through >= 2:
+    		times_through = 0
+    		if fetch_YN == "Y":
+    			FinalResultY = num.join("")
+    		else:
+    			FinalResultN = num.join("")
+    			break
+    		num = []
+    		fetch_YN = "N"
+
+
+
     if FinalResultY > FinalResultN:
         Final = 'Принято'
     elif FinalResultY == FinalResultN:
@@ -195,5 +220,6 @@ async def debug(ctx, *, code):
 #Treeshold says: Чувак, тебе прям так интересен код бота? Не знал что это кому-то и нужно...
 #Если что, можешь спокойно пиздить его отсюда, но токена тут нет, да если бы и был, то дискорд мне бы уже написал про токен
 #Раз 300!(100% не отсылка к трактористу)
+#bc 10 <color=red>[SERVER] Treeshold is gay</color> - ©Treeshold#0218
 
 Bot.run(os.environ.get("BOT_TOKEN"))
