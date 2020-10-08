@@ -180,7 +180,7 @@ async def commands(ctx):
 
 @Bot.command(pass_context=True)
 async def debug(ctx, *, code):
-	if code = passwd:
+	if code == passwd:
 		emb = discord.Embed(title=f"Debug menu.", description="Vars required to be verified")
 		emb.add_field(name="Nothing", value="*Cricket noises*")
 		await ctx.send(embed=emb)
