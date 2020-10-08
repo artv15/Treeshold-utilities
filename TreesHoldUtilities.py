@@ -147,7 +147,6 @@ async def scp500(ctx):
 @commands.has_permissions(administrator=True)
 async def tnexit(ctx, num, *, passd):
     num = int(num)
-    print(">>Receieved " + str(passd) + " as code. Corrent one: " + str(passwd))
     if passd == passwd:
         for i in range(num, 1, -1):
             emb = discord.Embed(title=f"Tactical nuke INCOMING in T-minus " + str(i) + " seconds!", description="RUN AWAY!!!")
@@ -179,5 +178,14 @@ async def commands(ctx):
     emb.add_field(name="tnexit", value="Завершает скрипт бота.")
     await ctx.send(embed=emb)
 
+@Bot.command(pass_context=True)
+async def debug(ctx, *, code):
+	if code = passwd:
+		emb = discord.Embed(title=f"Debug menu.", description="Vars required to be verified")
+		emb.add_field(name="Nothing", value="*Cricket noises*")
+		await ctx.send(embed=emb)
+	else:
+		emb = discord.Embed(title=f"Invalid dev_code!", description="Check the logs and retry!")
+		await ctx.send(embed=emb)
 #Конец группы help
 Bot.run(os.environ.get("BOT_TOKEN"))
