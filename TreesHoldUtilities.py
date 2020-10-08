@@ -135,7 +135,7 @@ async def cough(ctx):
 
 @Bot.command(pass_context=True)
 async def scp500(ctx):
-    emb = discord.Embed(title="Корова с вирусом!", description="Вы выпили SCP-500.")
+    emb = discord.Embed(title="Корова с вирусом!", description="Вы выпили SCP-500.", colour=discord.Color.purple())
     await ctx.send(embed=emb)
     time.sleep(10)
     emb = discord.Embed(title="Корова с вирусом!", description="Ух тыж, коровы с вирусом больше у вас нет.")
@@ -149,15 +149,15 @@ async def tnexit(ctx, num, *, passd):
     num = int(num)
     if passd == passwd:
         for i in range(num, 1, -1):
-            emb = discord.Embed(title=f"Tactical nuke INCOMING in T-minus " + str(i) + " seconds!", description="RUN AWAY!!!")
+            emb = discord.Embed(title=f"Tactical nuke INCOMING in T-minus " + str(i) + " seconds!", description="RUN AWAY!!!", colour=discord.Color.purple())
             print(">>Tactical nuke engaged. Bot shutdown in T-" + str(i) + " seconds")
             await ctx.send(embed=emb)
             time.sleep(1)
-        emb = discord.Embed(title=f"Tactical nuke INCOMING in T-minus " + "1" + " second!", description="RUN AWAY!!!")
+        emb = discord.Embed(title=f"Tactical nuke INCOMING in T-minus " + "1" + " second!", description="RUN AWAY!!!", colour=discord.Color.purple())
         print(">>Tactical nuke engaged. Bot shutdown in T-" + "1" + " second!")
         await ctx.send(embed=emb)
         time.sleep(1)
-        emb = discord.Embed(title=f"BOOM", description="We r ded")
+        emb = discord.Embed(title=f"BOOM", description="We r ded", colour=discord.Color.purple())
         await ctx.send(embed=emb)
         exit(">>Bot destroyed by tactical nuke.")
     else:
@@ -175,9 +175,12 @@ async def commands(ctx):
     emb.add_field(name="startvote/starteventvote", value="Начало голосования/голосования за ивент")
     emb.add_field(name="endvote/endeventvote", value="Конец голосования/голосования за ивент")
     emb.add_field(name="scp500", value="Если вы болеете короной, выпейте это чудесное средство!")
-    emb.add_field(name="tnexit", value="Завершает скрипт бота.")
+    emb.add_field(name="tnexit", value="Завершает скрипт бота. Не выполняет своей функции, т.к. хостинг постоянно его перезапускает!")
     await ctx.send(embed=emb)
 
+#Конец группы help
+
+#Debug section
 @Bot.command(pass_context=True)
 async def debug(ctx, *, code):
 	if code == passwd:
@@ -187,5 +190,10 @@ async def debug(ctx, *, code):
 	else:
 		emb = discord.Embed(title=f"Invalid dev_code!", description="Check the logs and retry!")
 		await ctx.send(embed=emb)
-#Конец группы help
+#Debug section
+
+#Treeshold says: Чувак, тебе прям так интересен код бота? Не знал что это кому-то и нужно...
+#Если что, можешь спокойно пиздить его отсюда, но токена тут нет, да если бы и был, то дискорд мне бы уже написал про токен
+#Раз 300!(100% не отсылка к трактористу)
+
 Bot.run(os.environ.get("BOT_TOKEN"))
