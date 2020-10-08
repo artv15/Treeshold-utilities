@@ -68,7 +68,6 @@ async def endvote(ctx):
         result += reaction.emoji + ": " + str(reaction.count - 1)
     emb = discord.Embed(title=f'Результат.', description='Голоса: ' + str(result),
                                   colour=discord.Color.purple())
-    emb.add_field(name="Итог: ", value=Final, inline=True)
     print('>>Voting finished. Result: ' + str(result))
     await ctx.send(embed=emb)
 #Конец группы vote_commands
