@@ -70,11 +70,11 @@ async def endvote(ctx):
     fetch_YN = "Y" 
     num = []
     for i in result:
-    	if i = ":":
+    	if i == ":":
     		times_through = 1
     	else:
     		times_through = 0
-    	if i = " ":
+    	if i == " ":
     		times_through = 2
     	else:
     		times_through = 0
