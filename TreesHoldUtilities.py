@@ -23,6 +23,8 @@ async def on_ready():
     print(">>" + a)
     global passwd
     passwd = b
+    FinalResultY = 0
+    FinalResultN = 0
 
 @Bot.command(pass_context=True)
 @commands.has_permissions(administrator=True)
@@ -67,9 +69,7 @@ async def endvote(ctx):
     for reaction in resactions:
         result += reaction.emoji + ": " + str(reaction.count - 1)
     times_through = 0
-    fetch_YN = "Y" 
-    global FinalResultY
-    global FinalResultN
+    fetch_YN = "Y"
     num = []
     for i in result:
     	if i == ":":
