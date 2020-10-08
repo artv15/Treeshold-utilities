@@ -1,1 +1,1 @@
-worker: TreesHoldUtilities.py
+worker: python TreesHoldUtilities.py
