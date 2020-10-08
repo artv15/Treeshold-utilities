@@ -23,8 +23,6 @@ async def on_ready():
     print(">>" + a)
     global passwd
     passwd = b
-    FinalResultY = 0
-    FinalResultN = 0
 
 @Bot.command(pass_context=True)
 @commands.has_permissions(administrator=True)
@@ -36,7 +34,7 @@ async def banrep(ctx, usr, time, *, rule):
     Emb.add_field(name="Срок", value=time, inline=True)
     Emb.add_field(name="По причине", value=rule, inline=True)
     await ctx.send(embed=Emb)
-    print("Issued ban report. Report arguments: " + usr, time, rule)
+    print("Issued ban report. Report arguments: " + usr + time + rule)
 
 #Начало группы vote_commands
 message_id = 0 # Переменная для сообщения голосования
@@ -68,6 +66,8 @@ async def endvote(ctx):
     result = ''
     for reaction in resactions:
         result += reaction.emoji + ": " + str(reaction.count - 1)
+    FinalResultY = result[3]
+    FinalResultN = result[7]
     if FinalResultY > FinalResultN:
         Final = 'Принято'
     elif FinalResultY == FinalResultN:
@@ -108,19 +108,9 @@ async def endeventvote(ctx):
     result = ''
     for reaction in resactions:
         result += reaction.emoji + ": " + str(reaction.count - 1)
-    #Посчёт результата(Принято/Отказано)
-    FinalResultY = result[3]
-    FinalResultN = result[7]
-    if FinalResultY > FinalResultN:
-        Final = 'Принято'
-    elif FinalResultY == FinalResultN:
-        Final = 'Голоса равны. Решение за организатором голосования.'
-    elif FinalResultY < FinalResultN:
-        Final = 'Отказано.'
     emb = discord.Embed(title=f'Результат.', description='Итог голосования: ' + str(result),
                                   colour=discord.Color.purple())
-    emb.add_field(name="Итог: ", value=Final, inline=True)
-    print('>>Voting for event finished. Result: ' + str(result) + ' Final result: ' + Final)
+    print('>>Voting for event finished. Result: ' + str(result))
     await ctx.send(embed=emb)
 #Конец группы vote_event_commands
 
