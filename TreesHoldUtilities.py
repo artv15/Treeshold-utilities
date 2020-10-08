@@ -171,6 +171,16 @@ async def debug(ctx, *, code):
 	else:
 		emb = discord.Embed(title=f"Invalid dev_code!", description="Check the logs and retry!")
 		await ctx.send(embed=emb)
+
+#SourceCode section
+
+@Bot.command(pass_context=True)
+async def source(ctx):
+	emb = discord.Embed(title=f"ээээй, нечестно!", description="Команда будет работать, как только кто-то скинет мне ссылку, где лежит исходник!")
+	await ctx.send(embed=emb)
+
+#SourceCode end
+
 #Debug section
 
 #Treeshold says: Чувак, тебе прям так интересен код бота? Не знал что это кому-то и нужно...
