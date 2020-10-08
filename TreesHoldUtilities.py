@@ -68,33 +68,6 @@ async def endvote(ctx):
     result = ''
     for reaction in resactions:
         result += reaction.emoji + ": " + str(reaction.count - 1)
-    times_through = 0
-    fetch_YN = "Y"
-    num = []
-    for i in result:
-    	if i == ":":
-    		times_through = 1
-    	else:
-    		times_through = 0
-    	if i == " ":
-    		times_through = 2
-    	else:
-    		times_through = 0
-    	if i != "✅" or i != '❌' and times_through >= 2:
-    		num.append(str(i))
-    		times_through = 3
-    	elif times_through >= 2:
-    		times_through = 0
-    		if fetch_YN == "Y":
-    			FinalResultY = num.join("")
-    		else:
-    			FinalResultN = num.join("")
-    			break
-    		num = []
-    		fetch_YN = "N"
-
-
-
     if FinalResultY > FinalResultN:
         Final = 'Принято'
     elif FinalResultY == FinalResultN:
