@@ -176,7 +176,7 @@ async def debug(ctx, *, code):
 
 @Bot.command(pass_context=True)
 async def source(ctx):
-	emb = discord.Embed(title=f"ээээй, нечестно!", description="Команда будет работать, как только кто-то скинет мне ссылку, где лежит исходник!")
+	emb = discord.Embed(title=f"Here we go", description="Исходный код тут: https://github.com/artv15/Treeshold-utilities")
 	await ctx.send(embed=emb)
 
 #SourceCode end
