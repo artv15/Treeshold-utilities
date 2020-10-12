@@ -41,7 +41,7 @@ async def on_ready():
     preemb = discord.Embed(title=f"Bot started.", description="It just means what it actually works")
     id = "765174749671194644"
     channel = Bot.get_channel(id)
-	await channel.send(preemb)
+    await channel.send(preemb)
 
 @Bot.command(pass_context=True)
 @commands.has_permissions(administrator=True)
