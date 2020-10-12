@@ -6,7 +6,11 @@ import random
 import string
 import time
 import os
-
+import youtube_dl
+import os
+from discord.utils import get
+from discord import FFmpegPCMAudio
+from os import system
 #Perms
 
 #Council = has_role("░▒▓█ Совет-О5 █▓▒░")
@@ -216,6 +220,68 @@ async def source(ctx):
 #Channel create end
 
 #Debug section
+
+#Music section
+
+@bot.command(pass_context=True, brief="Подключается в вашему каналу", aliases=['j', 'jo'])
+@commands.has_role("Music permissions")
+async def join(ctx):
+    channel = ctx.message.author.voice.channel
+    if not channel:
+        await ctx.send("Вы не находитесь в канале!")
+        return
+    voice = get(bot.voice_clients, guild=ctx.guild)
+    if voice and voice.is_connected():
+        await voice.move_to(channel)
+    else:
+        voice = await channel.connect()
+    await voice.disconnect()
+    if voice and voice.is_connected():
+        await voice.move_to(channel)
+    else:
+        voice = await channel.connect()
+    await ctx.send(f"Присоединился к {channel}")
+
+@bot.command(pass_context=True, brief="Проиграет песню по [url]'", aliases=['pl'])
+@commands.has_role("Music permissions")
+async def play(ctx, url: str):
+    song_there = os.path.isfile("song.mp3")
+    try:
+        if song_there:
+            os.remove("song.mp3")
+    except PermissionError:
+        await ctx.send("Дождитесь окончания текущей песни или выполните команду 'stop'!")
+        return
+    await ctx.send("Секундочку(это не может занять минуту или две)")
+    print(">>Music: Someone wants to play music let me get that ready for them...")
+    voice = get(bot.voice_clients, guild=ctx.guild)
+    ydl_opts = {
+        'format': 'bestaudio/best',
+        'postprocessors': [{
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'mp3',
+            'preferredquality': '192',
+        }],
+    }
+    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+        ydl.download([url])
+    for file in os.listdir("./"):
+        if file.endswith(".mp3"):
+            os.rename(file, 'song.mp3')
+    voice.play(discord.FFmpegPCMAudio("song.mp3"))
+    voice.volume = 100
+    voice.is_playing()
+
+@bot.command(pass_context=True, brief="Makes the bot leave your channel", aliases=['l', 'le', 'lea'])
+async def leave(ctx):
+    channel = ctx.message.author.voice.channel
+    voice = get(bot.voice_clients, guild=ctx.guild)
+    if voice and voice.is_connected():
+        await voice.disconnect()
+        await ctx.send(f"Вышел из {channel}")
+    else:
+        await ctx.send("Не думаю, что я в канале...")
+#Music end
 
 #Treeshold says: Чувак, тебе прям так интересен код бота? Не знал что это кому-то и нужно...
 #Если что, можешь спокойно пиздить его отсюда, но токена тут нет, да если бы и был, то дискорд мне бы уже написал про токен
