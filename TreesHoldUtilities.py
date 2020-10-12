@@ -38,6 +38,10 @@ async def on_ready():
     print(">>" + a)
     global passwd
     passwd = b
+    preemb = discord.Embed(title=f"Bot started.", description="It just means what it actually works")
+    id = "765174749671194644"
+    channel = Bot.get_channel(id)
+	await channel.send(preemb)
 
 @Bot.command(pass_context=True)
 @commands.has_permissions(administrator=True)
@@ -47,10 +51,15 @@ async def banrep(ctx, usr, time, *, rule):
     time = str(time)
     rule = str(rule)
     Emb = discord.Embed(title=f"Выдан бан игроку " + usr, colour = discord.Color.purple())
+    author = ctx.author
     Emb.add_field(name="Срок", value=time, inline=True)
     Emb.add_field(name="По причине", value=rule, inline=True)
     await ctx.send(embed=Emb)
     print("Issued ban report. Report arguments: " + usr + time + rule)
+    preemb = discord.Embed(title=f"Issued ban report. Report arguments: " + usr + time + rule, description="By " + author)
+    id = "765174749671194644"
+    channel = Bot.get_channel(id)
+	await channel.send(preemb)
 
 #Начало группы vote_commands
 message_id = 0 # Переменная для сообщения голосования
