@@ -339,7 +339,7 @@ async def warn(ctx, member : discord.Member,*, reason : str):
     emb=discord.Embed(title=f"Стоять! Руки вверх!", description="Вам выдано предупреждение!")
     emb.add_field(name="Причина:", value=reason)
     await member.send(embed=emb)
-    await ctx.send(✅ Предупреждение выдано!)
+    await ctx.send("✅ Предупреждение выдано!")
 
 #Member warn end
 
