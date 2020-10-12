@@ -271,8 +271,9 @@ async def play(ctx, url: str):
     voice.volume = 100
     voice.is_playing()
 
-@Bot.command(pass_context=True)
+@Bot.command(pass_context=True, brief="Tactical nuke INCOMIIIING!!!")
 async def nuke(ctx):
+	discord.opus.load_opus()
 	voice = get(Bot.voice_clients, guild=ctx.guild)
 	voice.play(discord.FFmpegPCMAudio("TN.mp3"))
 	voice.volume = 100
