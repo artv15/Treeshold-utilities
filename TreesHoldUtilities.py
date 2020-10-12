@@ -200,8 +200,8 @@ async def source(ctx):
 #Channel create
 
 @Bot.command(pass_context=True)
-async def create_room(ctx, name, type):
-	guild = member.guild
+async def create_room(ctx, type, *, name):
+	guild = ctx.guild
 	if type == "voice":
 		overwrite = {
 		guild.me: discord.PermissionOverwrite(manage_permissions=True)
