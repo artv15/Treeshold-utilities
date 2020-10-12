@@ -200,6 +200,7 @@ async def source(ctx):
 #Shout
 
 @Bot.command(pass_context=True)
+@commands.has_permissions(administrator=True)
 @commands.has_role("Shout permission")
 async def shout(ctx, *, content: str):
 	emb = discord.Embed(title="Громкое заявление!", description=content)
