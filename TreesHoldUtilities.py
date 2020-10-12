@@ -223,7 +223,7 @@ async def source(ctx):
 
 #Music section
 
-@bot.command(pass_context=True, brief="Подключается в вашему каналу", aliases=['j', 'jo'])
+@Bot.command(pass_context=True, brief="Подключается в вашему каналу", aliases=['j', 'jo'])
 @commands.has_role("Music permissions")
 async def join(ctx):
     channel = ctx.message.author.voice.channel
@@ -242,7 +242,7 @@ async def join(ctx):
         voice = await channel.connect()
     await ctx.send(f"Присоединился к {channel}")
 
-@bot.command(pass_context=True, brief="Проиграет песню по [url]'", aliases=['pl'])
+@Bot.command(pass_context=True, brief="Проиграет песню по [url]'", aliases=['pl'])
 @commands.has_role("Music permissions")
 async def play(ctx, url: str):
     song_there = os.path.isfile("song.mp3")
@@ -272,7 +272,7 @@ async def play(ctx, url: str):
     voice.volume = 100
     voice.is_playing()
 
-@bot.command(pass_context=True, brief="Makes the bot leave your channel", aliases=['l', 'le', 'lea'])
+@Bot.command(pass_context=True, brief="Makes the bot leave your channel", aliases=['l', 'le', 'lea'])
 async def leave(ctx):
     channel = ctx.message.author.voice.channel
     voice = get(bot.voice_clients, guild=ctx.guild)
