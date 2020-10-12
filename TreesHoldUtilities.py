@@ -413,8 +413,8 @@ async def setup(ctx):
                     else:
                         c.execute ("UPDATE guild SET guildID = ?, ownerID = ?, voiceChannelID = ?, voiceCategoryID = ? WHERE guildID = ?",(guildID,id,channel.id,new_cat.id, guildID))
                     await ctx.channel.send("**You are all setup and ready to go!**")
-                #except:
-                #    await ctx.channel.send("You didn't enter the names properly.\nUse `.voice setup` again!")
+                except:
+                    await ctx.channel.send("You didn't enter the names properly.\nUse `.voice setup` again!")
     else:
         await ctx.channel.send(f"{ctx.author.mention} only the owner of the server can setup the bot!")
     conn.commit()
