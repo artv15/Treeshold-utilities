@@ -229,7 +229,7 @@ async def join(ctx):
     if not channel:
         await ctx.send("Вы не находитесь в канале!")
         return
-    voice = get(bot.voice_clients, guild=ctx.guild)
+    voice = get(Bot.voice_clients, guild=ctx.guild)
     if voice and voice.is_connected():
         await voice.move_to(channel)
     else:
@@ -252,7 +252,7 @@ async def play(ctx, url: str):
         return
     await ctx.send("Секундочку(это не может занять минуту или две)")
     print(">>Music: Someone wants to play music let me get that ready for them...")
-    voice = get(bot.voice_clients, guild=ctx.guild)
+    voice = get(Bot.voice_clients, guild=ctx.guild)
     ydl_opts = {
         'format': 'bestaudio/best',
         'postprocessors': [{
@@ -273,7 +273,7 @@ async def play(ctx, url: str):
 @Bot.command(pass_context=True, brief="Makes the bot leave your channel", aliases=['l', 'le', 'lea'])
 async def leave(ctx):
     channel = ctx.message.author.voice.channel
-    voice = get(bot.voice_clients, guild=ctx.guild)
+    voice = get(Bot.voice_clients, guild=ctx.guild)
     if voice and voice.is_connected():
         await voice.disconnect()
         await ctx.send(f"Вышел из {channel}")
