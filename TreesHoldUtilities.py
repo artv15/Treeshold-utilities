@@ -20,7 +20,7 @@ import traceback
 import sqlite3
 import sys
 #Perms
-Bot = commands.Bot(command_prefix= '#')
+Bot = commands.Bot(command_prefix= '.')
 
 #Council = has_role("░▒▓█ Совет-О5 █▓▒░")
 #FManager = has_role("░▒▓█ Менеджер объекта █▓▒░")
