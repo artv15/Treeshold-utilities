@@ -39,6 +39,20 @@ async def on_ready():
     global passwd
     passwd = b
 
+    from discord import opus
+
+	def load_opus_lib():
+    	if opus.is_loaded():
+        	return
+
+    	try:
+        	opus._load_default()
+        	return
+    	except OSError:
+        	 pass
+
+    	raise RuntimeError('Could not load an opus lib.')
+
 @Bot.command(pass_context=True)
 @commands.has_permissions(administrator=True)
 @commands.has_role("Ban report permission")
@@ -273,7 +287,7 @@ async def play(ctx, url: str):
 
 @Bot.command(pass_context=True, brief="Tactical nuke INCOMIIIING!!!")
 async def nuke(ctx):
-	discord.opus.load_opus("TN.mp3")
+	load_opus_lib()
 	voice = get(Bot.voice_clients, guild=ctx.guild)
 	voice.play(discord.FFmpegPCMAudio("TN.mp3"))
 	voice.volume = 100
