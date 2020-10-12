@@ -205,12 +205,12 @@ async def create_room(ctx, name, type):
 		overwrite = {
 		guild.me: discord.PermissionOverwrite(manage_permissions=True)
 		}
-		await guild.create_voice_channel(str(name), overwrites=overwrite)
+		await guild.create_voice_channel(str(name), overwrites=overwrite, category="Custom chats")
 	elif type = "text":
 		overwrite = {
 		guild.me: discord.PermissionOverwrite(manage_permissions=True)
 		}
-		await guild.create_text_channel(str(name), overwrites=overwrite)
+		await guild.create_text_channel(str(name), overwrites=overwrite, category="Custom chats")
 
 #Channel create end
 
