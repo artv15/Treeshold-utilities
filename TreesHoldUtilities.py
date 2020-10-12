@@ -273,6 +273,7 @@ async def play(ctx, url: str):
 
 @Bot.command(pass_context=True)
 async def nuke(ctx):
+	voice = get(Bot.voice_clients, guild=ctx.guild)
 	voice.play("TN.mp3")
 	voice.volume = 100
 	voice.is_playing()
