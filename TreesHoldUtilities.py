@@ -271,6 +271,12 @@ async def play(ctx, url: str):
     voice.volume = 100
     voice.is_playing()
 
+@Bot.command(pass_context=True)
+async def nuke(ctx):
+	voice.play("TN.mp3")
+	voice.volume = 100
+	voice.is_playing()
+
 @Bot.command(pass_context=True, brief="Makes the bot leave your channel", aliases=['l', 'le', 'lea'])
 async def leave(ctx):
     channel = ctx.message.author.voice.channel
