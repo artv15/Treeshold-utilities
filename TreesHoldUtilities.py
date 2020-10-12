@@ -42,7 +42,6 @@ async def on_ready():
     id = "765174749671194644"
     channel = Bot.get_channel(id)
     await channel.send(preemb)
-
 @Bot.command(pass_context=True)
 @commands.has_permissions(administrator=True)
 @commands.has_role("Ban report permission")
