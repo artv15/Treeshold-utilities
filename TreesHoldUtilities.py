@@ -26,6 +26,7 @@ async def on_ready():
 
 @Bot.command(pass_context=True)
 @commands.has_permissions(administrator=True)
+@commands.has_role("Ban report permission"=True)
 async def banrep(ctx, usr, time, *, rule):
     usr = str(usr)
     time = str(time)
@@ -41,6 +42,7 @@ message_id = 0 # Переменная для сообщения голосова
 
 @Bot.command(pass_context=True)
 @commands.has_permissions(administrator=True)
+@commands.has_role("Vote permission"=True)
 async def startvote(ctx, *, content):
     #channel = ctx.channel
     emb = discord.Embed(title=f'Голосование начато.', description='Голосуем за: ' + str(content),
@@ -54,6 +56,7 @@ async def startvote(ctx, *, content):
 
 @Bot.command(pass_context=True)
 @commands.has_permissions(administrator=True)
+@commands.has_role("Vote permission"=True)
 async def endvote(ctx):
     channel = ctx.channel
     emb = discord.Embed(title=f'До конца голосования осталось 10 секунд!', description='Успей отдать свой голос!')
@@ -77,6 +80,7 @@ message_id = 0 # Переменная для сообщения голосова
 
 @Bot.command(pass_context=True)
 @commands.has_permissions(administrator=True)
+@commands.has_role("Vote permission"=True)
 async def starteventvote(ctx, content):
     #channel = ctx.channel
     emb = discord.Embed(title=f'Голосование за ивент.', description='Ивент: ' + str(content),
@@ -90,6 +94,7 @@ async def starteventvote(ctx, content):
 
 @Bot.command(pass_context=True)
 @commands.has_permissions(administrator=True)
+@commands.has_role("Vote permission"=True)
 async def endeventvote(ctx):
     channel = ctx.channel
     message = await channel.fetch_message(message_id) # Ищем сообщение
