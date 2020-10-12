@@ -7,6 +7,17 @@ import string
 import time
 import os
 
+#Perms
+
+05 = has_role("░▒▓█ Совет-О5 █▓▒░")
+FManager = has_role("░▒▓█ Менеджер объекта █▓▒░")
+SZManager = has_role("►Senior zone manager◄")
+Sponsor = has_role("░▒▓█ Sponsor █▓▒░")
+admin = has_role("►Zone manager◄")
+moderator = has_role("►MTF Unit◄")
+
+#Perms end
+
 ban_message_id = 0
 def buildblock(size):
     return ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(size))
@@ -26,7 +37,6 @@ async def on_ready():
 
 @Bot.command(pass_context=True)
 @commands.has_permissions(administrator=True)
-@commands.has_role("Ban report permission"=True)
 async def banrep(ctx, usr, time, *, rule):
     usr = str(usr)
     time = str(time)
@@ -80,7 +90,6 @@ message_id = 0 # Переменная для сообщения голосова
 
 @Bot.command(pass_context=True)
 @commands.has_permissions(administrator=True)
-@commands.has_role("Vote permission"=True)
 async def starteventvote(ctx, content):
     #channel = ctx.channel
     emb = discord.Embed(title=f'Голосование за ивент.', description='Ивент: ' + str(content),
@@ -94,7 +103,6 @@ async def starteventvote(ctx, content):
 
 @Bot.command(pass_context=True)
 @commands.has_permissions(administrator=True)
-@commands.has_role("Vote permission"=True)
 async def endeventvote(ctx):
     channel = ctx.channel
     message = await channel.fetch_message(message_id) # Ищем сообщение
