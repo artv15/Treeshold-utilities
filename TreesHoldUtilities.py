@@ -381,7 +381,7 @@ async def on_voice_state_update(self, member, before, after):
     conn.commit()
     conn.close()
 
-@commands.command()
+@voice.command()
 async def help(self, ctx):
     embed = discord.Embed(title="Help", description="",color=0x7289da)
     embed.set_author(name=f"{ctx.guild.me.display_name}",url="https://discordbots.org/bot/472911936951156740", icon_url=f"{ctx.guild.me.avatar_url}")
