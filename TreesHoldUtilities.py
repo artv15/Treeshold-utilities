@@ -38,14 +38,15 @@ async def on_ready():
 @Bot.command(pass_context=True)
 @commands.has_permissions(administrator=True)
 async def banrep(ctx, usr, time, *, rule):
-    usr = str(usr)
-    time = str(time)
-    rule = str(rule)
-    Emb = discord.Embed(title=f"Выдан бан игроку " + usr, colour = discord.Color.purple())
-    Emb.add_field(name="Срок", value=time, inline=True)
-    Emb.add_field(name="По причине", value=rule, inline=True)
-    await ctx.send(embed=Emb)
-    print("Issued ban report. Report arguments: " + usr + time + rule)
+	if 05:
+    	usr = str(usr)
+    	time = str(time)
+    	rule = str(rule)
+    	Emb = discord.Embed(title=f"Выдан бан игроку " + usr, colour = discord.Color.purple())
+    	Emb.add_field(name="Срок", value=time, inline=True)
+    	Emb.add_field(name="По причине", value=rule, inline=True)
+    	await ctx.send(embed=Emb)
+    	print("Issued ban report. Report arguments: " + usr + time + rule)
 
 #Начало группы vote_commands
 message_id = 0 # Переменная для сообщения голосования
