@@ -11,6 +11,14 @@ import os
 from discord.utils import get
 from discord import FFmpegPCMAudio
 from os import system
+import math
+import asyncio
+import aiohttp
+import json
+from random import randint
+import traceback
+import sqlite3
+import sys
 #Perms
 
 #Council = has_role("░▒▓█ Совет-О5 █▓▒░")
@@ -21,6 +29,20 @@ from os import system
 #moderator = has_role("►MTF Unit◄")
 
 #Perms end
+
+client = discord.Client()
+
+bot = commands.Bot(command_prefix=".")
+
+initial_extensions = ['cogs.voice']
+
+if __name__ == '__main__':
+    for extension in initial_extensions:
+        try:
+            bot.load_extension(extension)
+        except Exception as e:
+            print(f'Failed to load extension {extension}.', file=sys.stderr)
+            traceback.print_exc()
 
 ban_message_id = 0
 def buildblock(size):
