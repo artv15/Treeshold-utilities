@@ -5,3 +5,4 @@ chardet
 youtube-dl
 ffprobe
 ffmpeg
+PyNaCl
