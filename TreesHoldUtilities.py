@@ -38,10 +38,7 @@ async def on_ready():
     print(">>" + a)
     global passwd
     passwd = b
-    preemb = discord.Embed(title=f"Bot started.", description="It just means what it actually works")
-    id = "765174749671194644"
-    channel = Bot.get_channel(id)
-    await channel.send(preemb)
+
 @Bot.command(pass_context=True)
 @commands.has_permissions(administrator=True)
 @commands.has_role("Ban report permission")
@@ -55,10 +52,6 @@ async def banrep(ctx, usr, time, *, rule):
     Emb.add_field(name="По причине", value=rule, inline=True)
     await ctx.send(embed=Emb)
     print("Issued ban report. Report arguments: ", usr, time, rule)
-    preemb = discord.Embed(title=f"Issued ban report. Report arguments: " + usr + " " + time + " " + rule, description="By " + author)
-    id = "765174749671194644"
-    channel = Bot.get_channel("765174749671194644")
-    await channel.send(preemb)
 
 #Начало группы vote_commands
 message_id = 0 # Переменная для сообщения голосования
@@ -256,7 +249,7 @@ async def play(ctx, url: str):
         if song_there:
             os.remove("song.mp3")
     except PermissionError:
-        await ctx.send("Дождитесь окончания текущей песни или выполните команду 'stop'!")
+        await ctx.send("Дождитесь окончания текущей песни или выполните команду 'leave'!")
         return
     await ctx.send("Секундочку(это не может занять минуту или две)")
     print(">>Music: Someone wants to play music let me get that ready for them...")
