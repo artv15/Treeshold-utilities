@@ -53,7 +53,7 @@ message_id = 0 # Переменная для сообщения голосова
 
 @Bot.command(pass_context=True)
 @commands.has_permissions(administrator=True)
-@commands.has_role("Vote permission"=True)
+@commands.has_role("Vote permission")
 async def startvote(ctx, *, content):
     #channel = ctx.channel
     emb = discord.Embed(title=f'Голосование начато.', description='Голосуем за: ' + str(content),
@@ -67,7 +67,7 @@ async def startvote(ctx, *, content):
 
 @Bot.command(pass_context=True)
 @commands.has_permissions(administrator=True)
-@commands.has_role("Vote permission"=True)
+@commands.has_role("Vote permission")
 async def endvote(ctx):
     channel = ctx.channel
     emb = discord.Embed(title=f'До конца голосования осталось 10 секунд!', description='Успей отдать свой голос!')
