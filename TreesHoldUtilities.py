@@ -40,7 +40,6 @@ async def on_ready():
     passwd = b
 
     from discord import opus
-
 	def load_opus_lib():
     	if opus.is_loaded():
         	return
