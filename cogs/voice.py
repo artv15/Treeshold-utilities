@@ -65,6 +65,7 @@ class voice(commands.Cog):
                     category = self.bot.get_channel(categoryID)
                     channel2 = await member.guild.create_voice_channel(name,category=category)
                     channelID = channel2.id
+                    print("BotInfo = " + str(self.bot.user))
                     await member.move_to(channel2)
                     await channel2.set_permissions(self.bot.user, connect=True,read_messages=True)
                     #await channel2.set_permissions(giverights, manage_channel=True)
