@@ -382,7 +382,7 @@ async def on_voice_state_update(self, member, before, after):
     conn.close()
 
 @voice.command()
-async def setup(self, ctx):
+async def setup(ctx):
     conn = sqlite3.connect('voice.db')
     c = conn.cursor()
     guildID = ctx.guild.id
@@ -421,7 +421,7 @@ async def setup(self, ctx):
     conn.close()
 
 @voice.command()
-async def setlimit(self, ctx, num):
+async def setlimit(ctx, num):
     conn = sqlite3.connect('voice.db')
     c = conn.cursor()
     if ctx.author.id == ctx.guild.owner.id or ctx.author.id == 151028268856770560:
@@ -438,7 +438,7 @@ async def setlimit(self, ctx, num):
     conn.close()
 
 @voice.command()
-async def lock(self, ctx):
+async def lock(ctx):
     conn = sqlite3.connect('voice.db')
     c = conn.cursor()
     id = ctx.author.id
@@ -456,7 +456,7 @@ async def lock(self, ctx):
     conn.close()
 
 @voice.command()
-async def unlock(self, ctx):
+async def unlock(ctx):
     conn = sqlite3.connect('voice.db')
     c = conn.cursor()
     id = ctx.author.id
@@ -474,7 +474,7 @@ async def unlock(self, ctx):
     conn.close()
 
 @voice.command(aliases=["allow"])
-async def permit(self, ctx, member : discord.Member):
+async def permit(ctx, member : discord.Member):
     conn = sqlite3.connect('voice.db')
     c = conn.cursor()
     id = ctx.author.id
@@ -491,7 +491,7 @@ async def permit(self, ctx, member : discord.Member):
     conn.close()
 
 @voice.command(aliases=["deny"])
-async def reject(self, ctx, member : discord.Member):
+async def reject(ctx, member : discord.Member):
     conn = sqlite3.connect('voice.db')
     c = conn.cursor()
     id = ctx.author.id
@@ -517,7 +517,7 @@ async def reject(self, ctx, member : discord.Member):
 
 
 @voice.command()
-async def limit(self, ctx, limit):
+async def limit(ctx, limit):
     conn = sqlite3.connect('voice.db')
     c = conn.cursor()
     id = ctx.author.id
@@ -541,7 +541,7 @@ async def limit(self, ctx, limit):
 
 
 @voice.command()
-async def name(self, ctx,*, name):
+async def name(ctx,*, name):
     conn = sqlite3.connect('voice.db')
     c = conn.cursor()
     id = ctx.author.id
@@ -564,7 +564,7 @@ async def name(self, ctx,*, name):
     conn.close()
 
 @voice.command()
-async def claim(self, ctx):
+async def claim(ctx):
     x = False
     conn = sqlite3.connect('voice.db')
     c = conn.cursor()
