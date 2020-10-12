@@ -58,7 +58,7 @@ async def banrep(ctx, usr, time, *, rule):
     print("Issued ban report. Report arguments: ", usr, time, rule)
     preemb = discord.Embed(title=f"Issued ban report. Report arguments: " + usr + " " + time + " " + rule, description="By " + author)
     id = "765174749671194644"
-    channel = Bot.get_channel(id)
+    channel = Bot.get_channel("765174749671194644")
     await channel.send(preemb)
 
 #Начало группы vote_commands
