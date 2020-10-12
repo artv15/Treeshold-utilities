@@ -201,12 +201,12 @@ async def source(ctx):
 
 @Bot.command(pass_context=True)
 async def create_room(ctx, name, type):
-	if type = "voice":
+	if type == "voice":
 		overwrite = {
 		guild.me: discord.PermissionOverwrite(manage_permissions=True)
 		}
 		await guild.create_voice_channel(str(name), overwrites=overwrite, category="Custom chats")
-	elif type = "text":
+	elif type == "text":
 		overwrite = {
 		guild.me: discord.PermissionOverwrite(manage_permissions=True)
 		}
