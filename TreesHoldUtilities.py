@@ -39,7 +39,7 @@ def buildblock(size):
 client = discord.Client()
 
 bot = Bot
-#bot.remove_command("help")
+bot.remove_command("help")
 DISCORD_TOKEN = 'Enter Discord Token here'
 
 initial_extensions = ['cogs.voice']

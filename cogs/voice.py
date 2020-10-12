@@ -12,10 +12,10 @@ import validators
 from discord.ext.commands.cooldowns import BucketType
 from time import gmtime, strftime
 
-
-class voice(commands.Cog):
-    def __init__(self, bot):
-        self.bot = bot
+voice = Bot
+#class voice(commands.Cog):
+#    def __init__(self, bot):
+#        self.bot = bot
 
     @commands.Cog.listener()
     async def on_voice_state_update(self, member, before, after):
