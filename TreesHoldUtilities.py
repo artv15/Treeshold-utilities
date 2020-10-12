@@ -22,6 +22,25 @@ from os import system
 
 #Perms end
 
+#Libs load
+
+import ctypes
+import ctypes.util
+ 
+print(">>ctypes - Find opus:")
+a = ctypes.util.find_library('opus')
+print(a)
+ 
+print(">>Discord - Load Opus:")
+b = discord.opus.load_opus(a)
+print(b)
+ 
+print(">>Discord - Is loaded:")
+c = discord.opus.is_loaded()
+print(c)
+
+#Libs end
+
 ban_message_id = 0
 def buildblock(size):
     return ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(size))
