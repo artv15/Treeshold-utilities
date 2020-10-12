@@ -274,7 +274,7 @@ async def play(ctx, url: str):
 
 @Bot.command(pass_context=True, brief="Tactical nuke INCOMIIIING!!!")
 async def nuke(ctx):
-	load_opus_lib()
+	opus._load_default()
 	voice = get(Bot.voice_clients, guild=ctx.guild)
 	voice.play(discord.FFmpegPCMAudio("TN.mp3"))
 	voice.volume = 100
