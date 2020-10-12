@@ -5,3 +5,5 @@ chardet
 youtube-dl
 ffprobe
 ffmpeg
+avconv
+avprobe
