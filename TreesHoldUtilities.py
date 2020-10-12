@@ -224,7 +224,6 @@ async def source(ctx):
 #Music section
 
 @Bot.command(pass_context=True, brief="Подключается в вашему каналу", aliases=['j', 'jo'])
-@commands.has_role("Music permissions")
 async def join(ctx):
     channel = ctx.message.author.voice.channel
     if not channel:
@@ -243,7 +242,6 @@ async def join(ctx):
     await ctx.send(f"Присоединился к {channel}")
 
 @Bot.command(pass_context=True, brief="Проиграет песню по [url]'", aliases=['pl'])
-@commands.has_role("Music permissions")
 async def play(ctx, url: str):
     song_there = os.path.isfile("song.mp3")
     try:
