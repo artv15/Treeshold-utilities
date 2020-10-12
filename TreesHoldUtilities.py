@@ -437,10 +437,6 @@ async def setlimit(self, ctx, num):
     conn.commit()
     conn.close()
 
-@setup.error
-async def info_error(self, ctx, error):
-    print(error)
-
 @voice.command()
 async def lock(self, ctx):
     conn = sqlite3.connect('voice.db')
