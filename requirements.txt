@@ -2,7 +2,7 @@ discord.py
 aiohttp
 websockets
 chardet
-youtube-dl --force-ipv4
+youtube-dl
 ffprobe
 ffmpeg
 PyNaCl
