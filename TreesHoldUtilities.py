@@ -318,7 +318,7 @@ voice = Bot
 #    def __init__(self, bot):
 #        self.bot = bot
     
-@coro()
+#@coro()
 async def on_voice_state_update(self, member, before, after):
     conn = sqlite3.connect('voice.db')
     c = conn.cursor()
