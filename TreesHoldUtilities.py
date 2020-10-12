@@ -20,6 +20,7 @@ import traceback
 import sqlite3
 import sys
 #Perms
+Bot = commands.Bot(command_prefix= '#')
 
 #Council = has_role("░▒▓█ Совет-О5 █▓▒░")
 #FManager = has_role("░▒▓█ Менеджер объекта █▓▒░")
@@ -30,10 +31,17 @@ import sys
 
 #Perms end
 
+ban_message_id = 0
+def buildblock(size):
+    return ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(size))
+
+
 client = discord.Client()
 
-bot = commands.Bot(command_prefix=".")
+bot = Bot
 bot.remove_command("help")
+DISCORD_TOKEN = 'Enter Discord Token here'
+
 initial_extensions = ['cogs.voice']
 
 if __name__ == '__main__':
@@ -44,18 +52,7 @@ if __name__ == '__main__':
             print(f'Failed to load extension {extension}.', file=sys.stderr)
             traceback.print_exc()
 
-@bot.event
-async def on_ready():
-    print('Logged in as')
-    print(bot.user.name)
-    print(bot.user.id)
-    print('------')
 
-
-ban_message_id = 0
-def buildblock(size):
-    return ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(size))
-Bot = commands.Bot(command_prefix= '#')
 
 global count
 count = 0
