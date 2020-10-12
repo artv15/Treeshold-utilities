@@ -331,6 +331,18 @@ if __name__ == '__main__':
 
 #Voice end
 
+#Member warn start
+
+@Bot.command(pass_context=True)
+@commands.has_role("Ban report permission")
+async def warn(ctx, member : discord.Member,*, reason : str):
+    emb=discord.Embed(title=f"Стоять! Руки вверх!", description="Вам выдано предупреждение!")
+    emb.add_field(name="Причина:", value=reason)
+    await member.send(embed=emb)
+    await ctx.send(✅ Предупреждение выдано!)
+
+#Member warn end
+
 #Hey! Look here!
 #Treeshold says: Чувак, тебе прям так интересен код бота? Не знал что это кому-то и нужно...
 #Если что, можешь спокойно пиздить его отсюда, но токена тут нет, да если бы и был, то дискорд мне бы уже написал про токен
