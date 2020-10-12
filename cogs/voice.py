@@ -43,6 +43,7 @@ class voice(commands.Cog):
                     setting=c.fetchone()
                     c.execute("SELECT channelLimit FROM guildSettings WHERE guildID = ?", (guildID,))
                     guildSetting=c.fetchone()
+                    giverights = member.id
                     if setting is None:
                         name = f"{member.name}'s channel"
                         if guildSetting is None:
@@ -66,6 +67,7 @@ class voice(commands.Cog):
                     channelID = channel2.id
                     await member.move_to(channel2)
                     await channel2.set_permissions(self.bot.user, connect=True,read_messages=True)
+                    await channel2.set_permissions(giverights, manage_channel=True)
                     await channel2.edit(name= name, user_limit = limit)
                     c.execute("INSERT INTO voiceChannel VALUES (?, ?)", (id,channelID))
                     conn.commit()
