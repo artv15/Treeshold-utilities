@@ -197,6 +197,23 @@ async def source(ctx):
 
 #SourceCode end
 
+#Channel create
+
+@Bot.command(pass_context=True)
+async def create_room(ctx, name, type):
+	if type = "voice":
+		overwrite = {
+		guild.me: discord.PermissionOverwrite(manage_permissions=True)
+		}
+		await guild.create_voice_channel(str(name), overwrites=overwrite)
+	elif type = "text":
+		overwrite = {
+		guild.me: discord.PermissionOverwrite(manage_permissions=True)
+		}
+		await guild.create_text_channel(str(name), overwrites=overwrite)
+
+#Channel create end
+
 #Debug section
 
 #Treeshold says: Чувак, тебе прям так интересен код бота? Не знал что это кому-то и нужно...
