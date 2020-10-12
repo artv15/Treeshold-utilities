@@ -200,7 +200,7 @@ async def source(ctx):
 #Shout
 
 @Bot.command(pass_context=True)
-@commands.has_permissions(administrator=True)
+@commands.has_permission(administrator=True)
 @commands.has_role("Shout permission")
 async def shoutout(ctx, *, content: str):
 	author = ctx.author
