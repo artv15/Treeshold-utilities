@@ -9,12 +9,12 @@ import os
 
 #Perms
 
-Council = has_role("░▒▓█ Совет-О5 █▓▒░")
-FManager = has_role("░▒▓█ Менеджер объекта █▓▒░")
-SZManager = has_role("►Senior zone manager◄")
-Sponsor = has_role("░▒▓█ Sponsor █▓▒░")
-admin = has_role("►Zone manager◄")
-moderator = has_role("►MTF Unit◄")
+#Council = has_role("░▒▓█ Совет-О5 █▓▒░")
+#FManager = has_role("░▒▓█ Менеджер объекта █▓▒░")
+#SZManager = has_role("►Senior zone manager◄")
+#Sponsor = has_role("░▒▓█ Sponsor █▓▒░")
+#admin = has_role("►Zone manager◄")
+#moderator = has_role("►MTF Unit◄")
 
 #Perms end
 
