@@ -420,7 +420,7 @@ async def setup(self, ctx):
     conn.commit()
     conn.close()
 
-@commands.command()
+@voice.command()
 async def setlimit(self, ctx, num):
     conn = sqlite3.connect('voice.db')
     c = conn.cursor()
