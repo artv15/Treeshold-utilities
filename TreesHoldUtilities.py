@@ -319,7 +319,7 @@ voice = Bot
 #        self.bot = bot
     
 #@coro()
-async def on_voice_state_update(self, member, before, after):
+async def on_voice_state_update(member, before, after):
     conn = sqlite3.connect('voice.db')
     c = conn.cursor()
     guildID = member.guild.id
@@ -393,14 +393,14 @@ async def setup(ctx):
         await ctx.channel.send("**You have 60 seconds to answer each question!**")
         await ctx.channel.send(f"**Enter the name of the category you wish to create the channels in:(e.g Voice Channels)**")
         try:
-            category = await self.bot.wait_for('message', check=check, timeout = 60.0)
+            category = await bot.wait_for('message', check=check, timeout = 60.0)
         except asyncio.TimeoutError:
             await ctx.channel.send('Took too long to answer!')
         else:
             new_cat = await ctx.guild.create_category_channel(category.content)
             await ctx.channel.send('**Enter the name of the voice channel: (e.g Join To Create)**')
             try:
-                channel = await self.bot.wait_for('message', check=check, timeout = 60.0)
+                channel = await bot.wait_for('message', check=check, timeout = 60.0)
             except asyncio.TimeoutError:
                 await ctx.channel.send('Took too long to answer!')
             else:
@@ -449,7 +449,7 @@ async def lock(ctx):
     else:
         channelID = voice[0]
         role = discord.utils.get(ctx.guild.roles, name='@everyone')
-        channel = self.bot.get_channel(channelID)
+        channel = bot.get_channel(channelID)
         await channel.set_permissions(role, connect=False,read_messages=True)
         await ctx.channel.send(f'{ctx.author.mention} Voice chat locked! 🔒')
     conn.commit()
@@ -467,7 +467,7 @@ async def unlock(ctx):
     else:
         channelID = voice[0]
         role = discord.utils.get(ctx.guild.roles, name='@everyone')
-        channel = self.bot.get_channel(channelID)
+        channel = bot.get_channel(channelID)
         await channel.set_permissions(role, connect=True,read_messages=True)
         await ctx.channel.send(f'{ctx.author.mention} Voice chat unlocked! 🔓')
     conn.commit()
@@ -484,7 +484,7 @@ async def permit(ctx, member : discord.Member):
         await ctx.channel.send(f"{ctx.author.mention} You don't own a channel.")
     else:
         channelID = voice[0]
-        channel = self.bot.get_channel(channelID)
+        channel = bot.get_channel(channelID)
         await channel.set_permissions(member, connect=True)
         await ctx.channel.send(f'{ctx.author.mention} You have permited {member.name} to have access to the channel. ✅')
     conn.commit()
@@ -502,12 +502,12 @@ async def reject(ctx, member : discord.Member):
         await ctx.channel.send(f"{ctx.author.mention} You don't own a channel.")
     else:
         channelID = voice[0]
-        channel = self.bot.get_channel(channelID)
+        channel = bot.get_channel(channelID)
         for members in channel.members:
             if members.id == member.id:
                 c.execute("SELECT voiceChannelID FROM guild WHERE guildID = ?", (guildID,))
                 voice=c.fetchone()
-                channel2 = self.bot.get_channel(voice[0])
+                channel2 = bot.get_channel(voice[0])
                 await member.move_to(channel2)
         await channel.set_permissions(member, connect=False,read_messages=True)
         await ctx.channel.send(f'{ctx.author.mention} You have rejected {member.name} from accessing the channel. ❌')
@@ -527,7 +527,7 @@ async def limit(ctx, limit):
         await ctx.channel.send(f"{ctx.author.mention} You don't own a channel.")
     else:
         channelID = voice[0]
-        channel = self.bot.get_channel(channelID)
+        channel = bot.get_channel(channelID)
         await channel.edit(user_limit = limit)
         await ctx.channel.send(f'{ctx.author.mention} You have set the channel limit to be '+ '{}!'.format(limit))
         c.execute("SELECT channelName FROM userSettings WHERE userID = ?", (id,))
@@ -551,7 +551,7 @@ async def name(ctx,*, name):
         await ctx.channel.send(f"{ctx.author.mention} You don't own a channel.")
     else:
         channelID = voice[0]
-        channel = self.bot.get_channel(channelID)
+        channel = bot.get_channel(channelID)
         await channel.edit(name = name)
         await ctx.channel.send(f'{ctx.author.mention} You have changed the channel name to '+ '{}!'.format(name))
         c.execute("SELECT channelName FROM userSettings WHERE userID = ?", (id,))
