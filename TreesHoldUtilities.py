@@ -381,11 +381,6 @@ async def on_voice_state_update(self, member, before, after):
     conn.commit()
     conn.close()
 
-
-@commands.group()
-async def voice(self, ctx):
-    pass
-
 @voice.command()
 async def setup(self, ctx):
     conn = sqlite3.connect('voice.db')
