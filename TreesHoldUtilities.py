@@ -55,8 +55,8 @@ async def banrep(ctx, usr, time, *, rule):
     Emb.add_field(name="Срок", value=time, inline=True)
     Emb.add_field(name="По причине", value=rule, inline=True)
     await ctx.send(embed=Emb)
-    print("Issued ban report. Report arguments: " + usr + time + rule)
-    preemb = discord.Embed(title=f"Issued ban report. Report arguments: " + usr + time + rule, description="By " + author)
+    print("Issued ban report. Report arguments: ", usr, time, rule)
+    preemb = discord.Embed(title=f"Issued ban report. Report arguments: " + usr + " " + time + " " + rule, description="By " + author)
     id = "765174749671194644"
     channel = Bot.get_channel(id)
 	await channel.send(preemb)
