@@ -9,7 +9,7 @@ import os
 
 #Perms
 
-05 = has_role("░▒▓█ Совет-О5 █▓▒░")
+Council = has_role("░▒▓█ Совет-О5 █▓▒░")
 FManager = has_role("░▒▓█ Менеджер объекта █▓▒░")
 SZManager = has_role("►Senior zone manager◄")
 Sponsor = has_role("░▒▓█ Sponsor █▓▒░")
@@ -38,7 +38,7 @@ async def on_ready():
 @Bot.command(pass_context=True)
 @commands.has_permissions(administrator=True)
 async def banrep(ctx, usr, time, *, rule):
-	if 05:
+	if Council:
     	usr = str(usr)
     	time = str(time)
     	rule = str(rule)
