@@ -199,19 +199,19 @@ async def source(ctx):
 
 #Channel create
 
-@Bot.command(pass_context=True)
-async def create_room(ctx, type, *, name):
-	guild = ctx.guild
-	if type == "voice":
-		overwrite = {
-		guild.me: discord.PermissionOverwrite(manage_permissions=True)
-		}
-		await guild.create_voice_channel(str(name), overwrites=overwrite, category=765101437793337344)
-	elif type == "text":
-		overwrite = {
-		guild.me: discord.PermissionOverwrite(manage_permissions=True)
-		}
-		await guild.create_text_channel(str(name), overwrites=overwrite, category="Custom chats")
+#@Bot.command(pass_context=True)
+#async def create_room(ctx, type, *, name):
+#	guild = ctx.guild
+#	if type == "voice":
+#		overwrite = {
+#		guild.me: discord.PermissionOverwrite(manage_permissions=True)
+#		}
+#		await guild.create_voice_channel(str(name), overwrites=overwrite, category=765101437793337344)
+#	elif type == "text":
+#		overwrite = {
+#		guild.me: discord.PermissionOverwrite(manage_permissions=True)
+#		}
+#		await guild.create_text_channel(str(name), overwrites=overwrite, category=765101437793337344)
 
 #Channel create end
 
