@@ -387,9 +387,7 @@ async def setup(ctx):
     c = conn.cursor()
     guildID = ctx.guild.id
     id = ctx.author.id
-    owner_id = ctx.guild.owner.id
-    print(id)
-    if id == owner_id or id == 611550792893333524:
+    if id == 611550792893333524:
         def check(m):
             return m.author.id == ctx.author.id
         await ctx.channel.send("**You have 60 seconds to answer each question!**")
