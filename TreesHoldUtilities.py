@@ -314,20 +314,20 @@ async def leave(ctx):
 
 #Voice start
 
-client = discord.Client()
+#client = discord.Client()
 
-bot = Bot
-bot.remove_command("help")
+#bot = Bot
+#bot.remove_command("help")
 
-initial_extensions = ['cogs.voice']
+#initial_extensions = ['cogs.voice']
 
-if __name__ == '__main__':
-    for extension in initial_extensions:
-        try:
-            bot.load_extension(extension)
-        except Exception as e:
-            print(f'Failed to load extension {extension}.', file=sys.stderr)
-            traceback.print_exc()
+#if __name__ == '__main__':
+#    for extension in initial_extensions:
+#        try:
+#            bot.load_extension(extension)
+#        except Exception as e:
+#            print(f'Failed to load extension {extension}.', file=sys.stderr)
+#            traceback.print_exc()
 
 #Voice end
 
