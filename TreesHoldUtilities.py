@@ -47,6 +47,15 @@ client = discord.Client()
 bot = Bot
 #bot.remove_command("help")
 
+initial_extensions = ['fsmoke.py']
+
+if __name__ == '__main__':
+    for extension in initial_extensions:
+        try:
+            bot.load_extension(extension)
+        except Exception as e:
+            print(f'Failed to load extension {extension}.', file=sys.stderr)
+            traceback.print_exc()
 
 global count
 count = 0
@@ -60,6 +69,7 @@ async def on_ready():
     global passwd
     passwd = b
     from discord import opus
+
 
 @Bot.command(pass_context=True)
 @commands.has_permissions(administrator=True)
@@ -319,15 +329,7 @@ async def leave(ctx):
 #bot = Bot
 #bot.remove_command("help")
 
-#initial_extensions = ['cogs.voice']
 
-#if __name__ == '__main__':
-#    for extension in initial_extensions:
-#        try:
-#            bot.load_extension(extension)
-#        except Exception as e:
-#            print(f'Failed to load extension {extension}.', file=sys.stderr)
-#            traceback.print_exc()
 
 #Voice end
 
