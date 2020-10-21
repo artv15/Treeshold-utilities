@@ -48,4 +48,4 @@ async def module(ctx):
 
 class cs(commands.Cog):
 	def setup(bot):
-    	bot.add_cog(cs(cs))
+		bot.add_cog(cs(cs))
