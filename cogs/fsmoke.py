@@ -16,32 +16,32 @@ class cs(commands.Cog):
     def __init__(self, bot):
         self.Bot = cs
 
-	@commands.group
-		async def cs(self, ctx):
-			pass
+@commands.group
+async def cs(self, ctx):
+	pass
 
-		@cs.command(pass_context=True)
-		async def flash(self, ctx, bombsite: str):
-			bombsite = lower().bombsite
-			if bombsite == a or bombsite == b:
-				emb = discord.Embed(title=f"ФЛЕШКА НА " + bombsite, description="Бегите нахуй", color=0x4d0000)
-				log_message = await ctx.send(embed=emb)
-				print("Someone issued `flash` command. Message id: " + str(log_message))
-			else:
-				emb = discord.Embed(title=f"блять", description="где такой плент то, а?", color=0x4d0000)
+@commands.command(pass_context=True)
+async def flash(self, ctx, bombsite: str):
+	bombsite = lower().bombsite
+	if bombsite == a or bombsite == b:
+		emb = discord.Embed(title=f"ФЛЕШКА НА " + bombsite, description="Бегите нахуй", color=0x4d0000)
+		log_message = await ctx.send(embed=emb)
+		print("Someone issued `flash` command. Message id: " + str(log_message))
+	else:
+		emb = discord.Embed(title=f"блять", description="где такой плент то, а?", color=0x4d0000)
 
-		@cs.command(pass_context=True)
-		async def smoke(self, ctx, bombsite: str):
-			bombsite = lower().bombsite
-			if bombsite == a or bombsite == b:
-				emb = discord.Embed(title=f"СМОУК НА " + bombsite, description="Бегите нахуй", color=0x4d0000)
-				log_message = await ctx.send(embed=emb)
-				print("Someone issued `smoke` command. Message id: " + str(log_message))
-			else:
-				emb = discord.Embed(title=f"блять", description="где такой плент то, а?", color=0x4d0000)
+@commands.command(pass_context=True)
+async def smoke(self, ctx, bombsite: str):
+	bombsite = lower().bombsite
+	if bombsite == a or bombsite == b:
+		emb = discord.Embed(title=f"СМОУК НА " + bombsite, description="Бегите нахуй", color=0x4d0000)
+		log_message = await ctx.send(embed=emb)
+		print("Someone issued `smoke` command. Message id: " + str(log_message))
+	else:
+		emb = discord.Embed(title=f"блять", description="где такой плент то, а?", color=0x4d0000)
 
-		@cs.command(pass_context=True)
-		async def module(ctx):
-			emb=discord.Embed(title="Автор модуля flash", description="Treeshold#0218", color=0x4d0000)
-			emb.add_field(name="Автор идеи:", value="Dlorka#9909", inline=True)
-			await ctx.send(embed=emb)
+@commands.command(pass_context=True)
+async def module(ctx):
+	emb=discord.Embed(title="Автор модуля flash", description="Treeshold#0218", color=0x4d0000)
+	emb.add_field(name="Автор идеи:", value="Dlorka#9909", inline=True)
+	await ctx.send(embed=emb)
