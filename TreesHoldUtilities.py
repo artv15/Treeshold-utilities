@@ -212,6 +212,9 @@ async def help(ctx):
     emb.add_field(name="endvote/endeventvote", value="Конец голосования/голосования за ивент")
     emb.add_field(name="scp500", value="Если вы болеете короной, выпейте это чудесное средство!")
     emb.add_field(name="tnexit", value="Завершает скрипт бота. Не выполняет своей функции, т.к. хостинг постоянно его перезапускает!")
+    emb.add_field(name="play", value="Проигрывает песню по youtube ссылке.")
+    emb.add_field(name="pause", value="Ставит текущую песню на паузу.")
+    emb.add_field(name="``leave`` aka ``get-out``", value="Шлёт бота на ||3 советских|| из текущего голосового канала.")
     await ctx.send(embed=emb)
 
 @Bot.command(pass_context=True)
