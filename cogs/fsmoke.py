@@ -12,7 +12,9 @@ import validators
 from discord.ext.commands.cooldowns import BucketType
 from time import gmtime, strftime
 
-
+class voice(commands.Cog):
+    def __init__(self, bot):
+        self.Bot = vot
 
 @commands.group
 async def cs(self, ctx):
