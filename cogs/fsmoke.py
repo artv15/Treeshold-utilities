@@ -45,3 +45,6 @@ async def module(ctx):
 	emb=discord.Embed(title="Автор модуля flash", description="Treeshold#0218", color=0x4d0000)
 	emb.add_field(name="Автор идеи:", value="Dlorka#9909", inline=True)
 	await ctx.send(embed=emb)
+
+def setup(bot):
+    bot.add_cog(voice(bot))
