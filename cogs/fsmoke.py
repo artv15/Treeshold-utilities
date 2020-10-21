@@ -47,4 +47,4 @@ async def module(ctx):
 	await ctx.send(embed=emb)
 
 def setup(bot):
-    bot.add_cog(cs(Bot))
+    bot.add_cog(cs(cs))
