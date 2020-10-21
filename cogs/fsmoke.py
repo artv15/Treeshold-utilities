@@ -46,6 +46,6 @@ async def module(ctx):
 	emb.add_field(name="Автор идеи:", value="Dlorka#9909", inline=True)
 	await ctx.send(embed=emb)
 
-
-async def setup(bot):
-    await bot.add_cog(cs(cs))
+@commands.event
+def setup(bot):
+    bot.add_cog(cs(cs))
