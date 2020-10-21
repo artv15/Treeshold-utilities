@@ -48,7 +48,7 @@ bot = Bot
 bot.remove_command("help")
 
 initial_extensions = ['cogs.fsmoke']
-x
+
 if __name__ == '__main__':
     print(">>Debug: Extensions are being loaded.")
     for extension in initial_extensions:
