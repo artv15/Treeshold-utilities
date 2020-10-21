@@ -12,10 +12,9 @@ import validators
 from discord.ext.commands.cooldowns import BucketType
 from time import gmtime, strftime
 
-class cs(commands.Cog):
-    def __init__(self, bot):
-    	global flash
-        self.Bot = flash
+def __init__(self, bot):
+	global flash
+    self.Bot = flash
 
 @commands.group
 async def cs(self, ctx):
