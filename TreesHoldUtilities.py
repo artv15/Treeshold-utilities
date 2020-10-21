@@ -49,7 +49,7 @@ bot.remove_command("help")
 
 initial_extensions = ['fsmoke.py']
 
-if __name__ == '__TreesHoldUtilities__':
+if __name__ == '__main__':
     for extension in initial_extensions:
         try:
             bot.load_extension(extension)
