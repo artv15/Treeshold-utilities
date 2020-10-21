@@ -12,15 +12,11 @@ import validators
 from discord.ext.commands.cooldowns import BucketType
 from time import gmtime, strftime
 
-def __init__(self, bot):
-	global flash
-    self.Bot = flash
-
 @commands.group
 async def cs(self, ctx):
 	pass
 
-@flash.command(pass_context=True)
+@Bot.command(pass_context=True)
 async def flash(self, ctx, bombsite: str):
 	bombsite = lower().bombsite
 	if bombsite == a or bombsite == b:
@@ -30,7 +26,7 @@ async def flash(self, ctx, bombsite: str):
 	else:
 		emb = discord.Embed(title=f"блять", description="где такой плент то, а?", color=0x4d0000)
 
-@flash.command(pass_context=True)
+@Bot.command(pass_context=True)
 async def smoke(self, ctx, bombsite: str):
 	bombsite = lower().bombsite
 	if bombsite == a or bombsite == b:
@@ -40,7 +36,7 @@ async def smoke(self, ctx, bombsite: str):
 	else:
 		emb = discord.Embed(title=f"блять", description="где такой плент то, а?", color=0x4d0000)
 
-@flash.command(pass_context=True)
+@Bot.command(pass_context=True)
 async def module(ctx):
 	emb=discord.Embed(title="Автор модуля flash", description="Treeshold#0218", color=0x4d0000)
 	emb.add_field(name="Автор идеи:", value="Dlorka#9909", inline=True)
