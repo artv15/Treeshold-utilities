@@ -21,7 +21,7 @@ class cs(commands.Cog):
 		pass
 
 	@flash.command
-	async def flash(self, ctx, bombsite: str):
+	async def flash(ctx, bombsite: str):
 		bombsite = lower().bombsite
 		if bombsite == a or bombsite == b:
 			emb = discord.Embed(title=f"ФЛЕШКА НА " + bombsite, description="Бегите нахуй", color=0x4d0000)
@@ -31,7 +31,7 @@ class cs(commands.Cog):
 			emb = discord.Embed(title=f"блять", description="где такой плент то, а?", color=0x4d0000)
 
 	@flash.command
-	async def smoke(self, ctx, bombsite: str):
+	async def smoke(ctx, bombsite: str):
 		bombsite = lower().bombsite
 		if bombsite == a or bombsite == b:
 			emb = discord.Embed(title=f"СМОУК НА " + bombsite, description="Бегите нахуй", color=0x4d0000)
@@ -41,7 +41,7 @@ class cs(commands.Cog):
 			emb = discord.Embed(title=f"блять", description="где такой плент то, а?", color=0x4d0000)
 
 	@flash.command
-	async def module(self, ctx):
+	async def module(ctx):
 		emb=discord.Embed(title="Автор модуля flash", description="Treeshold#0218", color=0x4d0000)
 		emb.add_field(name="Автор идеи:", value="Dlorka#9909", inline=True)
 		await ctx.send(embed=emb)
