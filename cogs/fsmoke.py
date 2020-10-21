@@ -18,6 +18,7 @@ class cs(commands.Cog):
 
 	@commands.group
 		async def cs(self, ctx):
+			pass
 
 		@cs.command(pass_context=True)
 		async def flash(self, ctx, bombsite: str):
