@@ -1,6 +1,5 @@
 import discord,asyncio,random,youtube_dl,string,os
 from discord.ext import commands
-from googleapiclient.discovery import build
 from discord.ext.commands import command
 
 # import pymongo
