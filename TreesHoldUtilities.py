@@ -218,7 +218,7 @@ async def help(ctx):
 async def status(ctx):
     version = "0.3"
     release = "Unstable"
-    emb = discord.Embed(title=f"Состояние и версия бота.", description= relesase + ". V " + version)
+    emb = discord.Embed(title=f"Состояние и версия бота.", description= release + ". V " + version)
     await ctx.send(embed=emb)
 #Конец группы help
 
