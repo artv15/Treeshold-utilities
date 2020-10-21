@@ -14,6 +14,7 @@ from time import gmtime, strftime
 
 class cs(commands.Cog):
     def __init__(self, bot):
+    	global flash
         self.Bot = flash
 
 @commands.group
