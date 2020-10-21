@@ -16,12 +16,12 @@ class cs(commands.Cog):
     def __init__(self, bot):
         self.Bot = flash
 
-	@commands.group
-	async def cs(self, ctx):
-		pass
+	#@commands.group
+	#async def cs(self, ctx):
+	#	pass
 
 	@flash.command(pass_context=True)
-	async def flash(ctx, bombsite: str):
+	async def flash(self, ctx, bombsite: str):
 		bombsite = lower().bombsite
 		if bombsite == a or bombsite == b:
 			emb = discord.Embed(title=f"ФЛЕШКА НА " + bombsite, description="Бегите нахуй", color=0x4d0000)
@@ -31,7 +31,7 @@ class cs(commands.Cog):
 			emb = discord.Embed(title=f"блять", description="где такой плент то, а?", color=0x4d0000)
 
 	@flash.command(pass_context=True)
-	async def smoke(ctx, bombsite: str):
+	async def smoke(self, ctx, bombsite: str):
 		bombsite = lower().bombsite
 		if bombsite == a or bombsite == b:
 			emb = discord.Embed(title=f"СМОУК НА " + bombsite, description="Бегите нахуй", color=0x4d0000)
