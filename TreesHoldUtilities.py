@@ -26,7 +26,7 @@ import validators
 from discord.ext.commands.cooldowns import BucketType
 from time import gmtime, strftime
 #Perms
-Bot = commands.Bot(command_prefix= '.')
+Bot = commands.Bot(command_prefix= '>')
 
 #Council = has_role("░▒▓█ Совет-О5 █▓▒░")
 #FManager = has_role("░▒▓█ Менеджер объекта █▓▒░")
