@@ -48,7 +48,7 @@ client = discord.Client()
 bot = Bot
 bot.remove_command("help")
 
-initial_extensions = ['cogs.fsmoke']
+initial_extensions = ['cogs.fsmoke', 'cogs.music']
 
 if __name__ == '__main__':
     print(">>Debug: Extensions are being loaded.")
@@ -264,70 +264,70 @@ async def source(ctx):
 
 #Music section
 
-@Bot.command(pass_context=True, brief="Подключается в вашему каналу", aliases=['j', 'jo'])
-async def join(ctx):
-    channel = ctx.message.author.voice.channel
-    if not channel:
-        await ctx.send("Вы не находитесь в канале!")
-        return
-    voice = get(Bot.voice_clients, guild=ctx.guild)
-    if voice and voice.is_connected():
-        await voice.move_to(channel)
-    else:
-        voice = await channel.connect()
-    await voice.disconnect()
-    if voice and voice.is_connected():
-        await voice.move_to(channel)
-    else:
-        voice = await channel.connect()
-    await ctx.send(f"Присоединился к {channel}")
+# @Bot.command(pass_context=True, brief="Подключается в вашему каналу", aliases=['j', 'jo'])
+# async def join(ctx):
+#     channel = ctx.message.author.voice.channel
+#     if not channel:
+#         await ctx.send("Вы не находитесь в канале!")
+#         return
+#     voice = get(Bot.voice_clients, guild=ctx.guild)
+#     if voice and voice.is_connected():
+#         await voice.move_to(channel)
+#     else:
+#         voice = await channel.connect()
+#     await voice.disconnect()
+#     if voice and voice.is_connected():
+#         await voice.move_to(channel)
+#     else:
+#         voice = await channel.connect()
+#     await ctx.send(f"Присоединился к {channel}")
 
-@Bot.command(pass_context=True, brief="Проиграет песню по [url]'", aliases=['pl'])
-async def play(ctx, url: str):
-    song_there = os.path.isfile("song.mp3")
-    try:
-        if song_there:
-            os.remove("song.mp3")
-    except PermissionError:
-        await ctx.send("Дождитесь окончания текущей песни или выполните команду 'leave'!")
-        return
-    await ctx.send("Секундочку(это не может занять минуту или две)")
-    print(">>Music: Someone wants to play music let me get that ready for them...")
-    voice = get(Bot.voice_clients, guild=ctx.guild)
-    ydl_opts = {
-        'format': 'bestaudio/best',
-        'postprocessors': [{
-            'key': 'FFmpegExtractAudio',
-            'preferredcodec': 'mp3',
-            'preferredquality': '192',
-        }],
-    }
-    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-        ydl.download([url])
-    for file in os.listdir("./"):
-        if file.endswith(".mp3"):
-            os.rename(file, 'song.mp3')
-    voice.play(discord.FFmpegPCMAudio("song.mp3"))
-    voice.volume = 100
-    voice.is_playing()
+# @Bot.command(pass_context=True, brief="Проиграет песню по [url]'", aliases=['pl'])
+# async def play(ctx, url: str):
+#     song_there = os.path.isfile("song.mp3")
+#     try:
+#         if song_there:
+#             os.remove("song.mp3")
+#     except PermissionError:
+#         await ctx.send("Дождитесь окончания текущей песни или выполните команду 'leave'!")
+#         return
+#     await ctx.send("Секундочку(это не может занять минуту или две)")
+#     print(">>Music: Someone wants to play music let me get that ready for them...")
+#     voice = get(Bot.voice_clients, guild=ctx.guild)
+#     ydl_opts = {
+#         'format': 'bestaudio/best',
+#         'postprocessors': [{
+#             'key': 'FFmpegExtractAudio',
+#             'preferredcodec': 'mp3',
+#             'preferredquality': '192',
+#         }],
+#     }
+#     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+#         ydl.download([url])
+#     for file in os.listdir("./"):
+#         if file.endswith(".mp3"):
+#             os.rename(file, 'song.mp3')
+#     voice.play(discord.FFmpegPCMAudio("song.mp3"))
+#     voice.volume = 100
+#     voice.is_playing()
 
-@Bot.command(pass_context=True, brief="Tactical nuke INCOMIIIING!!!")
-async def nuke(ctx):
-	opus._load_default()
-	voice = get(Bot.voice_clients, guild=ctx.guild)
-	voice.play(discord.FFmpegPCMAudio("TN.mp3"))
-	voice.volume = 100
-	voice.is_playing()
+# @Bot.command(pass_context=True, brief="Tactical nuke INCOMIIIING!!!")
+# async def nuke(ctx):
+# 	opus._load_default()
+# 	voice = get(Bot.voice_clients, guild=ctx.guild)
+# 	voice.play(discord.FFmpegPCMAudio("TN.mp3"))
+# 	voice.volume = 100
+# 	voice.is_playing()
 
-@Bot.command(pass_context=True, brief="Makes the bot leave your channel", aliases=['l', 'le', 'lea'])
-async def leave(ctx):
-    channel = ctx.message.author.voice.channel
-    voice = get(Bot.voice_clients, guild=ctx.guild)
-    if voice and voice.is_connected():
-        await voice.disconnect()
-        await ctx.send(f"Вышел из {channel}")
-    else:
-        await ctx.send("Не думаю, что я в канале...")
+# @Bot.command(pass_context=True, brief="Makes the bot leave your channel", aliases=['l', 'le', 'lea'])
+# async def leave(ctx):
+#     channel = ctx.message.author.voice.channel
+#     voice = get(Bot.voice_clients, guild=ctx.guild)
+#     if voice and voice.is_connected():
+#         await voice.disconnect()
+#         await ctx.send(f"Вышел из {channel}")
+#     else:
+#         await ctx.send("Не думаю, что я в канале...")
 #Music end
 
 #Voice start
