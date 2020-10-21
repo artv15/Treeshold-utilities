@@ -45,7 +45,7 @@ def buildblock(size):
 client = discord.Client()
 
 bot = Bot
-#bot.remove_command("help")
+bot.remove_command("help")
 
 initial_extensions = ['fsmoke.py']
 
@@ -202,7 +202,7 @@ async def tnexit(ctx, num, *, passd):
 #Начало группы help
 
 @Bot.command(pass_context=True)
-async def commands(ctx):
+async def help(ctx):
     emb = discord.Embed(title=f"Страница команд.", description="Тут находится список всех команд бота(их мало)")
     emb.add_field(name="help", value="Эта команда")
     emb.add_field(name="cough", value="Покашлять(но не делайте это в реальной жизни, ок да?")
@@ -212,6 +212,12 @@ async def commands(ctx):
     emb.add_field(name="tnexit", value="Завершает скрипт бота. Не выполняет своей функции, т.к. хостинг постоянно его перезапускает!")
     await ctx.send(embed=emb)
 
+@Bot.command(pass_context=True)
+async def status(ctx):
+    version = "0.3"
+    release = "Unstable"
+    emb = discord.Embed(title=f"Состояние и версия бота.", description= relesase + ". V " + version)
+    await ctx.send(embed=emb)
 #Конец группы help
 
 #Debug section
