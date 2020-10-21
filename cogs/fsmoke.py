@@ -13,8 +13,8 @@ from discord.ext.commands.cooldowns import BucketType
 from time import gmtime, strftime
 
 class fsmoke(commands.Cog):
-    def __init__(self, bot):
-        self.Bot = Bot
+	def __init__(self, bot):
+		self.Bot = Bot
 
 	@commands.group
 	async def cs(self, ctx):
