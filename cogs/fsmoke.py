@@ -48,4 +48,4 @@ class fsmoke(commands.Cog):
 
 
 def setup(Bot):
-	bot.add_cog(fsmoke(Bot))
+	Bot.add_cog(fsmoke(Bot))
