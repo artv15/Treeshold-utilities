@@ -332,9 +332,9 @@ async def leave(ctx):
 
 #Voice start
 
-#client = discord.Client()
+client = discord.Client()
 
-#bot = Bot
+bot = Bot
 #bot.remove_command("help")
 
 

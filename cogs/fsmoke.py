@@ -14,7 +14,7 @@ from time import gmtime, strftime
 
 class fsmoke(commands.Cog):
 	def __init__(self, bot):
-		self.Bot = Bot
+		self.bot = bot
 
 	@commands.group
 	async def cs(self, ctx):
@@ -48,4 +48,4 @@ class fsmoke(commands.Cog):
 
 
 def setup(Bot):
-	Bot.add_cog(fsmoke(Bot))
+	bot.add_cog(fsmoke(bot))
