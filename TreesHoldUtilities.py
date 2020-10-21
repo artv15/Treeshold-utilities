@@ -49,7 +49,7 @@ bot = Bot
 
 initial_extensions = ['fsmoke.py']
 
-if __name__ == '__main__':
+if __name__ == '__TreesHoldUtilities__':
     for extension in initial_extensions:
         try:
             bot.load_extension(extension)
