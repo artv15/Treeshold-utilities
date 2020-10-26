@@ -219,7 +219,7 @@ async def help(ctx):
 
 @Bot.command(pass_context=True)
 async def status(ctx):
-    version = "0.3"
+    version = "0.4"
     release = "Unstable"
     emb = discord.Embed(title=f"Состояние и версия бота.", description= release + ". V " + version)
     await ctx.send(embed=emb)
