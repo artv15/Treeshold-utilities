@@ -72,16 +72,16 @@ async def on_ready():
     passwd = b
     from discord import opus
     await bot.change_presence(activity=discord.Game(name="в КаесОчку"))
-    phr = random.randint(0, 2)
-    print(f">>Random: {phr}")
-    if phr == 0:
-        phrs = "Я родился!"
-    elif phr == 1:
-        phrs = "await ctx.send(embed=emb)"
-    elif phr == 2
-        phrs = "семён гей!"
-    channel = 709118929016193067
-    await channel.send(phr)
+    # phr = random.randint(0, 2)
+    # print(f">>Random: {phr}")
+    # if phr == 0:
+    #     phrs = "Я родился!"
+    # elif phr == 1:
+    #     phrs = "await ctx.send(embed=emb)"
+    # elif phr == 2
+    #     phrs = "семён гей!"
+    # channel = 709118929016193067
+    # await channel.send(phr)
 
 
 @Bot.command(pass_context=True)
