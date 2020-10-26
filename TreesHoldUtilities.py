@@ -111,8 +111,8 @@ async def startvote(ctx, *, content):
         await message.add_reaction('❌')
         global message_id # Если используется класс, то необходимо создать в классе переменную
         message_id = message.id # Сохраняем id сообщения для голосования
-    except Exception:
-        emb = discord.Embed(title="Ошибка:", description="Неправильные аргументы или нет прав доступа!")
+    except MissingRole:
+        emb = discord.Embed(title="Ошибка:", description="Недостаточный уровень доступа! Доступ запрещён!")
         await ctx.channel.send(embed=emb)
 
 @Bot.command(pass_context=True)
@@ -135,8 +135,8 @@ async def endvote(ctx):
                                       colour=discord.Color.purple())
         print('>>Voting finished. Result: ' + str(result))
         await ctx.send(embed=emb)
-    except Exception:
-        emb = discord.Embed(title="Ошибка:", description="Неправильные аргументы или нет прав доступа!")
+    except MissingRole:
+        emb = discord.Embed(title="Ошибка:", description="Недостаточный уровень доступа! Доступ запрещён!")
         await ctx.channel.send(embed=emb)
 #Конец группы vote_commands
 
@@ -157,8 +157,8 @@ async def starteventvote(ctx, content):
         await message.add_reaction('❌')
         global message_id # Если используется класс, то необходимо создать в классе переменную
         message_id = message.id # Сохраняем id сообщения для голосования
-    except Exception:
-        emb = discord.Embed(title="Ошибка:", description="Неправильные аргументы или нет прав доступа!")
+    except MissingRole:
+        emb = discord.Embed(title="Ошибка:", description="Недостаточный уровень доступа! Доступ запрещён!")
         await ctx.channel.send(embed=emb)
 
 @Bot.command(pass_context=True)
@@ -178,8 +178,8 @@ async def endeventvote(ctx):
                                       colour=discord.Color.purple())
         print('>>Voting for event finished. Result: ' + str(result))
         await ctx.send(embed=emb)
-    except Exception:
-        emb = discord.Embed(title="Ошибка:", description="Неправильные аргументы или нет прав доступа!")
+    except MissingRole:
+        emb = discord.Embed(title="Ошибка:", description="Недостаточный уровень доступа! Доступ запрещён!")
         await ctx.channel.send(embed=emb)
 #Конец группы vote_event_commands
 
