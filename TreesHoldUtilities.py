@@ -87,6 +87,11 @@ async def banrep(ctx, usr, time, *, rule):
     Emb.add_field(name="По причине", value=rule, inline=True)
     await ctx.send(embed=Emb)
     print("Issued ban report. Report arguments: ", usr, time, rule)
+    except Exception:
+        emb = discord.Embed(title="Ошибка:", description="Неправильные аргументы или нет прав доступа!")
+        await ctx.channel.send(embed=emb)
+
+
 
 #Начало группы vote_commands
 message_id = 0 # Переменная для сообщения голосования
@@ -104,6 +109,9 @@ async def startvote(ctx, *, content):
     await message.add_reaction('❌')
     global message_id # Если используется класс, то необходимо создать в классе переменную
     message_id = message.id # Сохраняем id сообщения для голосования
+    except Exception:
+        emb = discord.Embed(title="Ошибка:", description="Неправильные аргументы или нет прав доступа!")
+        await ctx.channel.send(embed=emb)
 
 @Bot.command(pass_context=True)
 #@commands.has_permissions(administrator=True)
@@ -124,6 +132,9 @@ async def endvote(ctx):
                                   colour=discord.Color.purple())
     print('>>Voting finished. Result: ' + str(result))
     await ctx.send(embed=emb)
+    except Exception:
+        emb = discord.Embed(title="Ошибка:", description="Неправильные аргументы или нет прав доступа!")
+        await ctx.channel.send(embed=emb)
 #Конец группы vote_commands
 
 #Начало группы vote_event_commands
@@ -142,6 +153,9 @@ async def starteventvote(ctx, content):
     await message.add_reaction('❌')
     global message_id # Если используется класс, то необходимо создать в классе переменную
     message_id = message.id # Сохраняем id сообщения для голосования
+    except Exception:
+        emb = discord.Embed(title="Ошибка:", description="Неправильные аргументы или нет прав доступа!")
+        await ctx.channel.send(embed=emb)
 
 @Bot.command(pass_context=True)
 #@commands.has_permissions(administrator=True)
@@ -159,6 +173,9 @@ async def endeventvote(ctx):
                                   colour=discord.Color.purple())
     print('>>Voting for event finished. Result: ' + str(result))
     await ctx.send(embed=emb)
+    except Exception:
+        emb = discord.Embed(title="Ошибка:", description="Неправильные аргументы или нет прав доступа!")
+        await ctx.channel.send(embed=emb)
 #Конец группы vote_event_commands
 
 #Начало группы coronavirus
@@ -220,7 +237,7 @@ async def help(ctx):
 
 @Bot.command(pass_context=True)
 async def status(ctx):
-    version = "0.4.1"
+    version = "0.4.2"
     release = "Development release"
     emb = discord.Embed(title=f"Состояние и версия бота.", description= release + ". V " + version)
     await ctx.send(embed=emb)
@@ -243,6 +260,12 @@ async def debug(ctx, *, code):
 async def source(ctx):
 	emb = discord.Embed(title=f"Here we go", description="Исходный код тут: https://github.com/artv15/Treeshold-utilities")
 	await ctx.send(embed=emb)
+
+@command(aliases=['cp', 'sp', 'change_presence', ])
+@Bot.command(pass_context=True)
+async def set_presence(ctx, *, presence : str):
+    print(f">>Someone changed my presence to {presence}")
+    await bot.change_presence(activity=discord.Game(name=presence))
 
 #SourceCode end
 
