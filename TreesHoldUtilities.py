@@ -48,7 +48,7 @@ client = discord.Client()
 bot = Bot
 bot.remove_command("help")
 
-initial_extensions = ['cogs.fsmoke', 'cogs.music']
+initial_extensions = ['cogs.music']
 
 if __name__ == '__main__':
     print(">>Debug: Extensions are being loaded.")
@@ -91,7 +91,7 @@ async def banrep(ctx, usr, time, *, rule):
 message_id = 0 # Переменная для сообщения голосования
 
 @Bot.command(pass_context=True)
-@commands.has_permissions(administrator=True)
+#@commands.has_permissions(administrator=True)
 @commands.has_role("Vote permission")
 async def startvote(ctx, *, content):
     #channel = ctx.channel
@@ -105,7 +105,7 @@ async def startvote(ctx, *, content):
     message_id = message.id # Сохраняем id сообщения для голосования
 
 @Bot.command(pass_context=True)
-@commands.has_permissions(administrator=True)
+#@commands.has_permissions(administrator=True)
 @commands.has_role("Vote permission")
 async def endvote(ctx):
     channel = ctx.channel
@@ -129,7 +129,7 @@ async def endvote(ctx):
 message_id = 0 # Переменная для сообщения голосования
 
 @Bot.command(pass_context=True)
-@commands.has_permissions(administrator=True)
+#@commands.has_permissions(administrator=True)
 @commands.has_role("Vote permission")
 async def starteventvote(ctx, content):
     #channel = ctx.channel
@@ -143,7 +143,7 @@ async def starteventvote(ctx, content):
     message_id = message.id # Сохраняем id сообщения для голосования
 
 @Bot.command(pass_context=True)
-@commands.has_permissions(administrator=True)
+#@commands.has_permissions(administrator=True)
 @commands.has_role("Vote permission")
 async def endeventvote(ctx):
     channel = ctx.channel
