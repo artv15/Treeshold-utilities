@@ -78,15 +78,16 @@ async def on_ready():
 @commands.has_permissions(administrator=True)
 @commands.has_role("Ban report permission")
 async def banrep(ctx, usr, time, *, rule):
-    usr = str(usr)
-    time = str(time)
-    rule = str(rule)
-    Emb = discord.Embed(title=f"Выдан бан игроку " + usr, colour = discord.Color.purple())
-    author = ctx.author
-    Emb.add_field(name="Срок", value=time, inline=True)
-    Emb.add_field(name="По причине", value=rule, inline=True)
-    await ctx.send(embed=Emb)
-    print("Issued ban report. Report arguments: ", usr, time, rule)
+    try:
+        usr = str(usr)
+        time = str(time)
+        rule = str(rule)
+        Emb = discord.Embed(title=f"Выдан бан игроку " + usr, colour = discord.Color.purple())
+        author = ctx.author
+        Emb.add_field(name="Срок", value=time, inline=True)
+        Emb.add_field(name="По причине", value=rule, inline=True)
+        await ctx.send(embed=Emb)
+        print("Issued ban report. Report arguments: ", usr, time, rule)
     except Exception:
         emb = discord.Embed(title="Ошибка:", description="Неправильные аргументы или нет прав доступа!")
         await ctx.channel.send(embed=emb)
@@ -101,14 +102,15 @@ message_id = 0 # Переменная для сообщения голосова
 @commands.has_role("Vote permission")
 async def startvote(ctx, *, content):
     #channel = ctx.channel
-    emb = discord.Embed(title=f'Голосование начато.', description='Голосуем за: ' + str(content),
-                                  colour=discord.Color.purple())
-    message = await ctx.send(embed=emb)
-    print('>>Started voting. Voting about: ' + str(content))
-    await message.add_reaction('✅')
-    await message.add_reaction('❌')
-    global message_id # Если используется класс, то необходимо создать в классе переменную
-    message_id = message.id # Сохраняем id сообщения для голосования
+    try:
+        emb = discord.Embed(title=f'Голосование начато.', description='Голосуем за: ' + str(content),
+                                      colour=discord.Color.purple())
+        message = await ctx.send(embed=emb)
+        print('>>Started voting. Voting about: ' + str(content))
+        await message.add_reaction('✅')
+        await message.add_reaction('❌')
+        global message_id # Если используется класс, то необходимо создать в классе переменную
+        message_id = message.id # Сохраняем id сообщения для голосования
     except Exception:
         emb = discord.Embed(title="Ошибка:", description="Неправильные аргументы или нет прав доступа!")
         await ctx.channel.send(embed=emb)
@@ -117,21 +119,22 @@ async def startvote(ctx, *, content):
 #@commands.has_permissions(administrator=True)
 @commands.has_role("Vote permission")
 async def endvote(ctx):
-    channel = ctx.channel
-    emb = discord.Embed(title=f'До конца голосования осталось 10 секунд!', description='Успей отдать свой голос!')
-    await ctx.send(embed=emb)
-    time.sleep(10)
-    message = await channel.fetch_message(message_id) # Ищем сообщение
-    # Фильтруем реакции, чтобы остались только нужные
-    resactions = [reaction for reaction in message.reactions if reaction.emoji in ['✅', '❌']]
-    # Превращаем результат голосования в строку (вычитаем 1 из количества, значение по умолчанию)
-    result = ''
-    for reaction in resactions:
-        result += reaction.emoji + ": " + str(reaction.count - 1)
-    emb = discord.Embed(title=f'Результат.', description='Голоса: ' + str(result),
-                                  colour=discord.Color.purple())
-    print('>>Voting finished. Result: ' + str(result))
-    await ctx.send(embed=emb)
+    try:
+        channel = ctx.channel
+        emb = discord.Embed(title=f'До конца голосования осталось 10 секунд!', description='Успей отдать свой голос!')
+        await ctx.send(embed=emb)
+        time.sleep(10)
+        message = await channel.fetch_message(message_id) # Ищем сообщение
+        # Фильтруем реакции, чтобы остались только нужные
+        resactions = [reaction for reaction in message.reactions if reaction.emoji in ['✅', '❌']]
+        # Превращаем результат голосования в строку (вычитаем 1 из количества, значение по умолчанию)
+        result = ''
+        for reaction in resactions:
+            result += reaction.emoji + ": " + str(reaction.count - 1)
+        emb = discord.Embed(title=f'Результат.', description='Голоса: ' + str(result),
+                                      colour=discord.Color.purple())
+        print('>>Voting finished. Result: ' + str(result))
+        await ctx.send(embed=emb)
     except Exception:
         emb = discord.Embed(title="Ошибка:", description="Неправильные аргументы или нет прав доступа!")
         await ctx.channel.send(embed=emb)
@@ -145,14 +148,15 @@ message_id = 0 # Переменная для сообщения голосова
 @commands.has_role("Vote permission")
 async def starteventvote(ctx, content):
     #channel = ctx.channel
-    emb = discord.Embed(title=f'Голосование за ивент.', description='Ивент: ' + str(content),
-                                  colour=discord.Color.purple())
-    message = await ctx.send(embed=emb)
-    print('>>Voting for event started. Voting for: ' + str(content))
-    await message.add_reaction('✅')
-    await message.add_reaction('❌')
-    global message_id # Если используется класс, то необходимо создать в классе переменную
-    message_id = message.id # Сохраняем id сообщения для голосования
+    try:
+        emb = discord.Embed(title=f'Голосование за ивент.', description='Ивент: ' + str(content),
+                                      colour=discord.Color.purple())
+        message = await ctx.send(embed=emb)
+        print('>>Voting for event started. Voting for: ' + str(content))
+        await message.add_reaction('✅')
+        await message.add_reaction('❌')
+        global message_id # Если используется класс, то необходимо создать в классе переменную
+        message_id = message.id # Сохраняем id сообщения для голосования
     except Exception:
         emb = discord.Embed(title="Ошибка:", description="Неправильные аргументы или нет прав доступа!")
         await ctx.channel.send(embed=emb)
@@ -161,18 +165,19 @@ async def starteventvote(ctx, content):
 #@commands.has_permissions(administrator=True)
 @commands.has_role("Vote permission")
 async def endeventvote(ctx):
-    channel = ctx.channel
-    message = await channel.fetch_message(message_id) # Ищем сообщение
-    # Фильтруем реакции, чтобы остались только нужные
-    resactions = [reaction for reaction in message.reactions if reaction.emoji in ['✅', '❌']]
-    # Превращаем результат голосования в строку (вычитаем 1 из количества, значение по умолчанию)
-    result = ''
-    for reaction in resactions:
-        result += reaction.emoji + ": " + str(reaction.count - 1)
-    emb = discord.Embed(title=f'Результат.', description='Итог голосования: ' + str(result),
-                                  colour=discord.Color.purple())
-    print('>>Voting for event finished. Result: ' + str(result))
-    await ctx.send(embed=emb)
+    try:
+        channel = ctx.channel
+        message = await channel.fetch_message(message_id) # Ищем сообщение
+        # Фильтруем реакции, чтобы остались только нужные
+        resactions = [reaction for reaction in message.reactions if reaction.emoji in ['✅', '❌']]
+        # Превращаем результат голосования в строку (вычитаем 1 из количества, значение по умолчанию)
+        result = ''
+        for reaction in resactions:
+            result += reaction.emoji + ": " + str(reaction.count - 1)
+        emb = discord.Embed(title=f'Результат.', description='Итог голосования: ' + str(result),
+                                      colour=discord.Color.purple())
+        print('>>Voting for event finished. Result: ' + str(result))
+        await ctx.send(embed=emb)
     except Exception:
         emb = discord.Embed(title="Ошибка:", description="Неправильные аргументы или нет прав доступа!")
         await ctx.channel.send(embed=emb)
@@ -237,7 +242,7 @@ async def help(ctx):
 
 @Bot.command(pass_context=True)
 async def status(ctx):
-    version = "0.4.2"
+    version = "0.4.2.1"
     release = "Development release"
     emb = discord.Embed(title=f"Состояние и версия бота.", description= release + ". V " + version)
     await ctx.send(embed=emb)
