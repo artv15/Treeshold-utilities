@@ -266,7 +266,7 @@ async def source(ctx):
 	emb = discord.Embed(title=f"Here we go", description="Исходный код тут: https://github.com/artv15/Treeshold-utilities")
 	await ctx.send(embed=emb)
 
-@command(aliases=['cp', 'sp', 'change_presence', ])
+#@command(aliases=['cp', 'sp', 'change_presence', ])
 @Bot.command(pass_context=True)
 async def set_presence(ctx, *, presence : str):
     print(f">>Someone changed my presence to {presence}")
