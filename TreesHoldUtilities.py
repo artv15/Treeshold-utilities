@@ -248,6 +248,8 @@ async def help(ctx):
     emb.add_field(name="play", value="Проигрывает песню по youtube ссылке.")
     emb.add_field(name="pause", value="Ставит текущую песню на паузу.")
     emb.add_field(name="``leave`` aka ``get-out``", value="Шлёт бота на ||3 советских|| из текущего голосового канала.")
+    emb.add_field(name="shout", value="Крикнуть с места! Нужно право на начало голосования!")
+    emb.set_footer(text="Бот создан Treeshold#0218")
     await ctx.send(embed=emb)
 
 @Bot.command(pass_context=True)
@@ -278,6 +280,7 @@ async def source(ctx):
 
 #@command(aliases=['cp', 'sp', 'change_presence', ])
 @Bot.command(pass_context=True)
+@commands.has_role("Vote permission")
 async def set_presence(ctx, *, presence : str):
     print(f">>Someone changed my presence to {presence}")
     await bot.change_presence(activity=discord.Game(name=presence))
