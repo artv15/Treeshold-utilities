@@ -290,7 +290,7 @@ async def set_presence(ctx, *, presence : str):
 @commands.has_role("Vote permission")
 async def shout(ctx, *, msg : str):
     author = ctx.author
-    emb = discord.Embed(title=f"Крик с места от {author}!", description=msg, color=discord.colour.purple())
+    emb = discord.Embed(title=f"Крик с места от {author}!", description=msg)
     await ctx.send(embed=emb)
 
 #shout end
