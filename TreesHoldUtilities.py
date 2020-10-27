@@ -284,6 +284,17 @@ async def set_presence(ctx, *, presence : str):
 
 #SourceCode end
 
+#embshout
+
+@Bot.command(pass_context=True)
+@commands.has_role("Vote permission")
+async def shout(ctx, *, msg : str):
+    author = ctx.author
+    emb = discord.Embed(title=f"Крик с места от {author}!", description=msg, color=discord.colour.purple())
+    await ctx.send(embed=emb)
+
+#shout end
+
 #Channel create
 
 #@Bot.command(pass_context=True)
