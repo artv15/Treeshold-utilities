@@ -21,7 +21,7 @@ from discord.ext.commands import command
 #format bestaudio/best or worstaudio
 ytdl_format_options= {
     'audioquality':8,
-    'format': 'worstaudio',
+    'format': 'bestaudio',
     'outtmpl': '{}',
     'restrictfilenames': True,
     'noplaylist': True,
