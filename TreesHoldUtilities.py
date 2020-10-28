@@ -284,18 +284,17 @@ async def source(ctx):
 async def set_presence(ctx, *, presence : str):
     print(f">>Someone changed my presence to {presence}")
     await bot.change_presence(activity=discord.Game(name=presence))
-
 #SourceCode end
 
 #embshout
-
 @Bot.command(pass_context=True)
 @commands.has_role("Vote permission")
 async def shout(ctx, *, msg : str):
     author = ctx.author
-    emb = discord.Embed(title=f"Крик с места от {author}!", description=msg)
+    emb = discord.Embed(title=f"Громкое заявление:", description=msg)
+    emb.set_footer(text=f"Команда выполнена ``{author}``.")
     await ctx.send(embed=emb)
-
+    await ctx.delete()
 #shout end
 
 #Channel create
