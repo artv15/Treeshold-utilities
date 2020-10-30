@@ -633,7 +633,7 @@ class MusicPlayer(commands.Cog,name='Music'):
                     return await msg.message.add_reaction(emoji='✅')
                     
         
-        return await msg.send("**Зайдите в тот же канал, где находится бот!**".title(),delete_after=30)
+        # return await msg.send("**Зайдите в тот же канал, где находится бот!**".title(),delete_after=30)
     
 
     
